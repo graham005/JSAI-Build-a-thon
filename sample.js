@@ -6,7 +6,7 @@ import "dotenv/config"
 
 const token = process.env["GITHUB_TOKEN"];
 const endpoint = "https://models.github.ai/inference";
-const model = "meta/Llama-4-Maverick-17B-128E-Instruct-FP8";
+const model = "gpt-4o";
 
 export async function main() {
     const imagePath = path.join(process.cwd(), "contoso_layout_sketch.jpg")

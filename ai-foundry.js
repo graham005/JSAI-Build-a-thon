@@ -19,7 +19,7 @@ var response = await client.path("chat/completions").post({
       top_p: 0.1,
       presence_penalty: 0,
       frequency_penalty: 0,
-      model: "Llama-4-Maverick-17B-128E-Instruct-FP8",
+      model: "gpt-4o",
   },
 });
 
