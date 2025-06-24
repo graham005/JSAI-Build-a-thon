@@ -122,22 +122,22 @@ export class ChatInterface extends LitElement {
   // Handle sending a message and receiving a response
   async _sendMessage() {
     if (!this.inputMessage.trim() || this.isLoading) return;
-    
+
     // Add user's message to the chat
     const userMessage = {
       role: 'user',
       content: this.inputMessage
     };
-    
+
     this.messages = [...this.messages, userMessage];
     const userQuery = this.inputMessage;
     this.inputMessage = '';
     this.isLoading = true;
-    
+
     try {
       // Simulate AI response (replace with real API call later)
-      const {reply, sources} = await this._apiCall(userQuery);
-      
+      const { reply, sources } = await this._apiCall(userQuery);
+
       // Add AI's response to the chat
       this.messages = [
         ...this.messages,
@@ -160,9 +160,9 @@ export class ChatInterface extends LitElement {
     const res = await fetch("http://localhost:3001/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         message,
-        useRAG: this.ragEnabled 
+        useRAG: this.ragEnabled
       }),
     });
     return await res.json();
