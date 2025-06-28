@@ -37,18 +37,19 @@ jobs:
     steps:
       # We'll need to check out the repository to verify the agent directory exists
       - name: checkout
-      uses: actions/checkout@v4
-      with:
-      fetch-depth: 0 # Let's get all the branches
+        uses: actions/checkout@v4
+        with:
+        fetch-depth: 0 # Let's get all the branches
 
       - name: Check node-os-mcp directory exists
-      id: check_node-os-mcp
-      run:
-      if [ -d "packages/node-os-mcp" ]; then
-      echo "node-os-mcp_exists=true" >> $GITHUB_OUTPUT
-      else
-      echo "node-os-mcp_exists=false" >> $GITHUB_OUTPUT
-      fi
+        id: check_node-os-mcp
+        run: |
+          if [ -d "packages/node-os-mcp" ]; then
+            echo "node-os-mcp_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "node-os-mcp_exists=false" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
 
       - name: Update to step 8
         if: steps.check_node-os-mcp.outputs.node-os-mcp_exists == 'true'
